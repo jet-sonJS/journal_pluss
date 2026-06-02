@@ -1,8 +1,20 @@
 [
     {
-        "username": "mum",
-        "email": "mum@gmail.com",
+        "username": "lilith",
+        "email": "kiki123@gmail.com",
+        "profilepic": "GitHub PfP.png",
+        "password": "123"
+    },
+    {
+        "username": "kiki",
+        "email": "kiki123@gmail.com",
         "profilepic": null,
-        "password": "$2y$12$0f.UZSvCk9IvSxdam\/6RUeciHIfiUL8C.SYNoGZJa3f\/SbEmgh77y"
+        "password": "$2y$12$TROUGgp1QxzApRRw5ivd1.vkxZVp5xjWJQU\/6UaQMLOdm8YvcYEYa"
+    },
+    {
+        "username": "bananas",
+        "email": "banananas@gmail.com",
+        "profilepic": null,
+        "password": "$2y$12$M9Vj3PKTG271PqDzbvBwdew.QCLHm33YWyYYua9E0CNfkkmdFD48y"
     }
 ]
