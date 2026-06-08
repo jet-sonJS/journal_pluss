@@ -33,14 +33,15 @@ session_start();
         <div class="modal-content">
             <span id="close">✕</span>
             <h2 id="modal-date"></h2>
-            <div id="entry-list">No entries for this date.</div>
+            <div id="entry-list"></div>
         </div>
     </div>
-    <script src="script.js"></script>
-    <div id="nav">
-        <a href="index.php">📑</a>
-        <a href="calendar.php">📆</a>
-        <a href="profile.php">👤</a>
+    
+     <div id="nav">
+        <a href="index.php" data-tooltip="Today" aria-label="Journal Entries">📑</a>
+        <a href="calendar.php" data-tooltip="Calendar" aria-label="Calendar" class="active">📆</a>
+        <a href="profile.php" data-tooltip="Your Profile" aria-label="Profile">👤</a>
     </div>
+<script src="script.js"></script>
 </body>
 </html>

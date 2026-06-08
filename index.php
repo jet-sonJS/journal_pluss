@@ -16,10 +16,10 @@ session_start();
 
 <div id="modal" class="modal">
    <div class="modal-content">
-      <span id="close">✕</span>
+      <span id="close" onclick="toggleForm(false)">✕</span>
     <div id="entry-form">
       <h2>New Journal Entry</h2>
-      <label>Date: <input type="date" id="entry-date" value="<?php echo date('Y-m-d'); ?>" readonly></label>
+      <label>Date: <input type="date" style="width:fit-content" id="entry-date" value="<?php echo date('Y-m-d'); ?>" readonly></label>
       <br><br>
       <textarea id="entry-content" rows="8" style="width: 100%; padding: 10px; font-size: 1rem;" placeholder="Write your journal entry here..."></textarea>
       <br><br>
@@ -56,8 +56,8 @@ session_start();
         }
 
         entriesContainer.innerHTML = entries.map(entry => `
-          <div style="border:1px solid #ddd; padding: 15px; margin-bottom: 12px; border-radius: 8px; text-align: left;">
-            <div style="font-size: 0.9rem; color: #555; margin-bottom: 8px;">${entry.date}</div>
+          <div class="entry">
+            <div class="date">${entry.date}</div>
             <div>${entry.content.replace(/\n/g, '<br>')}</div>
           </div>
         `).join('');
@@ -90,7 +90,7 @@ session_start();
         const content = entryContent.value.trim();
 
         if (!date || !content) {
-          showStatus('Please add both a date and content.', false);
+          showStatus('Please add content.', false);
           setTimeout(() => {
                     showStatus('');
                 }, 2000);
@@ -134,11 +134,11 @@ session_start();
 
       loadEntries(entryDate.value);
     </script>
-   <script src="script.js"></script>
    <div id="nav">
-        <a href="index.php">📑</a>
-        <a href="calendar.php">📆</a>
-        <a href="profile.php">👤</a>
+        <a href="index.php" class="active" data-tooltip="Today" aria-label="Journal Entries">📑</a>
+        <a href="calendar.php" data-tooltip="Calendar" aria-label="Calendar">📆</a>
+        <a href="profile.php" data-tooltip="Your Profile" aria-label="Profile">👤</a>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,23 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0 auto;
+    font-family: "Nunito", sans-serif;
 }
 
 body {
     padding: 30px;
     text-align: center;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 .date-picker {
   margin: 0 auto;
+  margin-top: 10px;
   width: 90%;
-  height: 88%;
+  height: fit-content;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 20px;
   font-family: sans-serif;
   user-select: none;
 }
@@ -36,17 +40,6 @@ body {
   margin: 0 auto;
   width: 90%;
   margin-bottom: 10px;
-}
-
-.top-bar button {
-  background: transparent;
-  border: none;
-  font-size: 2.5vw;
-  cursor: pointer;
-}
-
-.top-bar button:hover {
-  color: #007bff;
 }
 
 .weekdays {
@@ -97,31 +90,83 @@ body {
 
 #nav {
     margin: 0 auto;
+    margin-left: -30px;
     position: fixed;
-    bottom: 20px;
+    bottom: 0;
     width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.84);
+}
+
+#nav a {
+    position: relative;
+}
+
+#nav a .tooltip-box,
+.tooltip-box {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 0.35rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 1000;
+}
+
+#nav a .tooltip-box::after,
+.tooltip-box::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+#nav a:hover .tooltip-box,
+#nav a:focus-within .tooltip-box,
+.tooltip-box.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-12px);
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    font-size: 2rem;
+    margin: 0 15px;
+    margin-bottom: 100px;
+    position: relative;
 }
 
-#preview {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50px;
-    border: 2px solid #ccc;
-    margin-top: 10px;
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  top: 100%;
+  height: 5px;
+  border-radius: 50px;
+  background-color: #007bff;
+  transition: width 0.1s linear;
 }
 
-dis {
-    pointer-events: none;
-    border: 1.5px solid #ccc;
-    border-radius: 3px;
-    background-color: #f9f9f9;
-    padding: 3px;
+a:hover::after, a.active::after {
+  width: 100%;
 }
 
 .modal {
@@ -144,6 +189,8 @@ dis {
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
+    max-height: calc(100vh - 310px);
+    overflow-y: auto;
 }
 
 #close {
@@ -162,3 +209,107 @@ dis {
     text-decoration: none;
     cursor: pointer;
 }
+
+.entry {
+  border:1px solid #ddd;
+  padding: 15px;
+  margin-top: 12px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.entry .date {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+#addEntry {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button, input[type=file]::file-selector-button {
+  background: linear-gradient(45deg, #00c6ff, #007bff) no-repeat center center;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.459);
+  transition: all 0.03s linear;
+}
+
+button:hover, input[type=file]::file-selector-button:hover {
+  background: linear-gradient(45deg, #007bff, #00c6ff) no-repeat center center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.top-bar button {
+  background: transparent;
+  border: none;
+  font-size: 2.5vw;
+  cursor: pointer;
+  box-shadow: none;
+  color: #555;
+  padding: 0;
+}
+
+.top-bar button:hover {
+  color: #007bff;
+}
+
+.change, input[type=file]::file-selector-button {
+  font-size: 0.8vw;
+  padding: 7px 10px;
+  background: linear-gradient(45deg, #007bff, #00c6ff) no-repeat center center;
+  margin-right: 10px;
+}
+
+.change { padding: 10px 12px; }
+
+input, input:disabled, select {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+}
+
+input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+input:disabled:hover {
+  border-color: #ddd;
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: #007bff;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px #007bffa5;
+}
+
+textarea {
+  padding: 10px;
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+#preview {
+    width: 170px;
+    height: 165px;
+    border-radius: 50px;
+    border: 2px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+

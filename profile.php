@@ -7,15 +7,16 @@ session_start();
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Profile for <?php echo $_SESSION['username'] ?></h1>
+    <h1>Profile</h1>
     <form action="update_profile.php" method="post">
-      <label>Profile Picture: <img src="<?php echo $_SESSION['profilepic']; ?>" id="preview" />
+      <img src="<?php echo isset($_SESSION['profilepic']) ? $_SESSION['profilepic'] : 'default-profile.png'; ?>" id="preview" /><br>
+      <label>Profile Picture: 
         <input type="file" value="<?php echo $_SESSION['profilepic']; ?>" name="pfp" id="pfp">
       </label><br><br>
       <label>Username: <input type="text" value="<?php echo $_SESSION['username']; ?>" name="username" id="username"></label><br><br>
       <label>Email: <input type="email" value="<?php echo $_SESSION['email']; ?>" name="email" id="email"></label><br><br>
       <label>Password: <input type="password" value="********" name="pswd" class="dis" id="pswd" disabled></label>
-      <button>Change</button>
+      <button type="button" onclick="changePassword()" class="change">Change</button>
       <br><br>
       <button type="submit">Save</button>
     <script>    
@@ -31,10 +32,11 @@ session_start();
       });
     </script>
     </form>
-    <div id="nav">
-        <a href="index.php">📑</a>
-        <a href="calendar.php">📆</a>
-        <a href="profile.php">👤</a>
+     <div id="nav">
+        <a href="index.php" data-tooltip="Today" aria-label="Journal Entries">📑</a>
+        <a href="calendar.php" data-tooltip="Calendar" aria-label="Calendar">📆</a>
+        <a href="profile.php" data-tooltip="Your Profile" aria-label="Profile" class="active">👤</a>
     </div>
-  </body>
+      <script src="script.js"></script>
+    </body>
 </html>
