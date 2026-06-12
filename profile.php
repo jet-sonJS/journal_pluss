@@ -6,7 +6,7 @@ session_start();
     <title>Profile</title>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body style="overflow-y: auto;">
     <h1>Profile</h1>
     <form action="update_profile.php" method="post">
       <img src="<?php echo isset($_SESSION['profilepic']) ? $_SESSION['profilepic'] : 'default-profile.png'; ?>" id="preview" /><br>
@@ -16,7 +16,7 @@ session_start();
       <label>Username: <input type="text" value="<?php echo $_SESSION['username']; ?>" name="username" id="username"></label><br><br>
       <label>Email: <input type="email" value="<?php echo $_SESSION['email']; ?>" name="email" id="email"></label><br><br>
       <label>Password: <input type="password" value="********" name="pswd" class="dis" id="pswd" disabled></label>
-      <button type="button" onclick="changePassword()" class="change">Change</button>
+      <button type="button" onclick="changePassword()" class="change" disabled>Change</button>
       <br><br>
       <button type="submit">Save</button>
     <script>    

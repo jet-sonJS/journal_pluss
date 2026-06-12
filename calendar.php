@@ -12,9 +12,9 @@ session_start();
     <!-- <input type="date" id="datePicker"> -->
     <div class="date-picker">
         <div class="top-bar">
-                <button id="prev">‹</button>
+                <button id="prev" style="transform:rotateZ(-180deg)">⮞</button>
                 <span id="month_name"></span>
-                <button id="next">›</button>
+                <button id="next">⮞</button>
         </div>
 
         <div class="weekdays">
